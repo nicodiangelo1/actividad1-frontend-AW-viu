@@ -69,8 +69,11 @@ div.tapete.receptor img {
 	top:35px;
 	left:30px;
 }
-
-.sobrantes img {
+.tituloLogoDiv{
+	display: flex;
+	justify-content: center;
+}
+#sobrantes img {
 
     width: 40px; 
     height: 50px;

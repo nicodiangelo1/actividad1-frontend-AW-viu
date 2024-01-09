@@ -306,6 +306,7 @@ function comprobarCartasRestantantes(){
 		barajar(mazoInicial)
 		cargarTapeteInicial(mazoInicial)
 	}else if (nCartasPrincipal === 0 && nCartasSobrantes === 0){
+		alert("¡Ganaste!")
 	}
 }
 function colorDiferente(actual, anterior){
