@@ -103,3 +103,10 @@ div.tapete#sobrantes{
 div.tapete.receptor{
 	background-color: lightgreen;
 }
+
+/* container para centrar el botón Reiniciar*/
+.flex-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
