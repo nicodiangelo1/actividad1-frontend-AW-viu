@@ -71,7 +71,7 @@ function comenzarJuego() {
     for(let palo of palos){
 		for(let numero of numeros){
 			let img_carta = document.createElement('img');
-			let rutaImagen = "../imagenes/baraja/" + numero + "-" + palo + ".png" 
+			let rutaImagen = "../actividad1-frontend-AW-viu/imagenes/baraja/" + numero + "-" + palo + ".png" 
 
 			img_carta.setAttribute("data-palo", palo);
 			img_carta.setAttribute("data-numero", numero);
@@ -122,7 +122,6 @@ function comenzarJuego() {
 */
 
 function arrancarTiempo(){
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! **/
 	if (temporizador) clearInterval(temporizador);
     let hms = function (){
 			let seg = Math.trunc( segundos % 60 );
@@ -138,7 +137,7 @@ function arrancarTiempo(){
     hms(); // Primera visualización 00:00:00
 	temporizador = setInterval(hms, 1000);
     	
-} // arrancarTiempo
+} 
 
 
 /**
@@ -179,17 +178,18 @@ function cargarTapeteInicial(mazo) {
 			event.dataTransfer.setData("text/plain", event.target.id);
 		};
 		tapeteInicial.appendChild(carta);
-	});} // cargarTapeteInicial
-
-	let tapetes = document.querySelectorAll('.tapete, .receptor');
-
-	tapetes.forEach(tapete => {
-		tapete.ondragover = function(event) {
-			event.preventDefault(); 
-		};
-
-		tapete.ondrop = manejarSoltado;
 	});
+} // cargarTapeteInicial
+
+let tapetes = document.querySelectorAll('.tapete, .receptor');
+
+tapetes.forEach(tapete => {
+	tapete.ondragover = function(event) {
+		event.preventDefault(); 
+	};
+
+	tapete.ondrop = manejarSoltado;
+});
 
 
 /**
@@ -199,7 +199,7 @@ function cargarTapeteInicial(mazo) {
 function incContador(contador){
 	valorInc = parseInt(contador.textContent) + 1 
 	contador.textContent = valorInc.toString()
-} // incContador
+} 
 
 /**
 	Idem que anterior, pero decrementando 
@@ -207,7 +207,7 @@ function incContador(contador){
 function decContador(contador){
 	valorDec = parseInt(contador.textContent) - 1
 	contador.textContent = valorDec.toString()
-} // decContador
+} 
 
 /**
 	Similar a las anteriores, pero ajustando la cuenta al
@@ -306,7 +306,17 @@ function comprobarCartasRestantantes(){
 		barajar(mazoInicial)
 		cargarTapeteInicial(mazoInicial)
 	}else if (nCartasPrincipal === 0 && nCartasSobrantes === 0){
-		alert("¡Ganaste!")
+		Swal.fire({
+			title: 'Juego finalizado',
+			text: `Has completado la partida en ${contTiempo.textContent} y ${contMovimientos.textContent} movimientos`,
+			showCancelButton: true,
+			confirmButtonText: 'Reiniciar',
+			cancelButtonText: 'Cancelar'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+			  reset()
+			}
+		  });		  
 	}
 }
 function colorDiferente(actual, anterior){
