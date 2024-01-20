@@ -60,14 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Desarrollo del comienzo de juego
 function comenzarJuego() {
-	/* Crear baraja, es decir crear el mazoInicial. Este será un array cuyos 
-	elementos serán elementos HTML <img>, siendo cada uno de ellos una carta.
-	Sugerencia: en dos bucles for, bárranse los "palos" y los "numeros", formando
-	oportunamente el nombre del fichero png que contiene a la carta (recuérdese poner
-	el path correcto en la URL asociada al atributo src de <img>). Una vez creado
-	el elemento img, inclúyase como elemento del array mazoInicial. 
-	*/
-
     for(let palo of palos){
 		for(let numero of numeros){
 			let img_carta = document.createElement('img');
@@ -83,7 +75,6 @@ function comenzarJuego() {
 	barajar(mazoInicial)
 	cargarTapeteInicial(mazoInicial)
 
-	/*** !!!!!!!!!!!!!!!!!!! CODIGO !!!!!!!!!!!!!!!!!!!! **/
 	setContador(contReceptor1,0)
 	setContador(contReceptor2,0)
 	setContador(contReceptor3,0)
@@ -91,10 +82,9 @@ function comenzarJuego() {
 	setContador(contSobrantes,0)
 	setContador(contMovimientos,0)
 	
-
 	// Arrancar el conteo de tiempo
 	arrancarTiempo()
-} // comenzarJuego
+} 
 
 
 /**
@@ -274,7 +264,7 @@ function manejarSoltado(event) {
 				break;
 		}
 		incContador(contMovimientos);
-		comprobarCartasRestantantes()
+		comprobarCartasRestantes()
 	}
     
 }
@@ -294,7 +284,7 @@ function getColorCarta(palo){
 	}
 }
 
-function comprobarCartasRestantantes(){
+function comprobarCartasRestantes(){
 	let nCartasPrincipal = mazoInicial.length;
 	let nCartasSobrantes = mazoSobrantes.length;
 
